@@ -16,6 +16,7 @@ eclipse/
 *.iws
 .idea/
 out/
+classes/
 
 # Key Store
 *.jks
