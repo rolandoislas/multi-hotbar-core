@@ -12,7 +12,7 @@ before_script:
 
 script:
 - ./gradlew setupCIWorkspace
-- ./gradlew build --stacktrace
+- ./gradlew build --info
 
 after_success:
 - ./gradlew curseforge
