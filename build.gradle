@@ -65,7 +65,6 @@ if (ext.tag) {
             changelog = System.getenv("TRAVIS_COMMIT_MESSAGE") ?: ""
             releaseType = project.releaseType
             mainArtifact jar
-            addArtifact deobfJar
         }
     }
 }
