@@ -1,9 +1,9 @@
 package com.rolandoislas.multihotbar.asm;
 
 import com.google.common.eventbus.EventBus;
-import net.minecraftforge.fml.common.DummyModContainer;
-import net.minecraftforge.fml.common.LoadController;
-import net.minecraftforge.fml.common.ModMetadata;
+import cpw.mods.fml.common.DummyModContainer;
+import cpw.mods.fml.common.LoadController;
+import cpw.mods.fml.common.ModMetadata;
 
 import javax.annotation.Nullable;
 import java.security.cert.Certificate;

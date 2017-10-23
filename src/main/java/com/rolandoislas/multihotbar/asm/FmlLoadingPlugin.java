@@ -3,7 +3,7 @@ package com.rolandoislas.multihotbar.asm;
 import com.rolandoislas.multihotbar.asm.transformer.InvTweaks;
 import com.rolandoislas.multihotbar.asm.transformer.InvTweaksConst;
 import com.rolandoislas.multihotbar.asm.transformer.InventoryPlayer;
-import net.minecraftforge.fml.relauncher.IFMLLoadingPlugin;
+import cpw.mods.fml.relauncher.IFMLLoadingPlugin;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 

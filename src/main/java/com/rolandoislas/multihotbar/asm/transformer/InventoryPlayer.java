@@ -4,7 +4,6 @@ import com.rolandoislas.multihotbar.asm.FmlLoadingPlugin;
 import com.rolandoislas.multihotbar.asm.ModContainer;
 import com.rolandoislas.multihotbar.asm.util.ClassNodeUtil;
 import net.minecraft.launchwrapper.IClassTransformer;
-import net.minecraftforge.fml.common.FMLCommonHandler;
 import org.objectweb.asm.ClassReader;
 import org.objectweb.asm.ClassWriter;
 import org.objectweb.asm.Opcodes;
@@ -25,9 +24,9 @@ public class InventoryPlayer implements IClassTransformer {
         ClassReader classReader = new ClassReader(basicClass);
         classReader.accept(classNode, 0);
         // Transform
-        transform9to36("getHotbarSize", "()I", "j", "()I", classNode);
-        transform9to36("getBestHotbarSlot", "()I", "l", "()I", classNode);
-        transform9to36("isHotbar", "(I)Z", "e", "(I)Z", classNode);
+        transform9to36("getHotbarSize", "()I", "i", "()I", classNode);
+        transform9to36("getCurrentItem", "()Lnet/minecraft/item/ItemStack;",
+                "h", "()Ladd;", classNode);
         // Write to array
         ClassWriter classWriter = new ClassWriter(ClassWriter.COMPUTE_MAXS | ClassWriter.COMPUTE_FRAMES);
         classNode.accept(classWriter);
