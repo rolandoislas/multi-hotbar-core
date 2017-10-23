@@ -25,8 +25,8 @@ public class InventoryPlayer implements IClassTransformer {
         ClassReader classReader = new ClassReader(basicClass);
         classReader.accept(classNode, 0);
         // Transform
-        transform9to36("getHotbarSize", "()I", "j", "()I", classNode);
-        transform9to36("getBestHotbarSlot", "()I", "l", "()I", classNode);
+        transform9to36("getHotbarSize", "()I", "i", "()I", classNode);
+        transform9to36("getBestHotbarSlot", "()I", "k", "()I", classNode);
         transform9to36("isHotbar", "(I)Z", "e", "(I)Z", classNode);
         // Write to array
         ClassWriter classWriter = new ClassWriter(ClassWriter.COMPUTE_MAXS | ClassWriter.COMPUTE_FRAMES);
