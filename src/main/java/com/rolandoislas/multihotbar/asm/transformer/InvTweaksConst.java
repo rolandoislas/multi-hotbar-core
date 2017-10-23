@@ -34,7 +34,8 @@ public class InvTweaksConst implements IClassTransformer {
     private void transformHotbarSize(ClassNode classNode) {
         boolean found = false;
         for (FieldNode field : classNode.fields) {
-            if (field.name.equals("HOTBAR_SIZE") && field.desc.equals("I")) {
+            if ((field.name.equals("HOTBAR_SIZE") || field.name.equals("INVENTORY_HOTBAR_SIZE")) &&
+                    field.desc.equals("I")) {
                 found = true;
                 field.value = ModContainer.HOTBAR_SIZE;
             }
