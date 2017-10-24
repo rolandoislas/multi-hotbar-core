@@ -1,8 +1,6 @@
 package com.rolandoislas.multihotbar.asm;
 
-import com.rolandoislas.multihotbar.asm.transformer.InvTweaks;
-import com.rolandoislas.multihotbar.asm.transformer.InvTweaksConst;
-import com.rolandoislas.multihotbar.asm.transformer.InventoryPlayer;
+import com.rolandoislas.multihotbar.asm.transformer.Transformer;
 import net.minecraftforge.fml.relauncher.IFMLLoadingPlugin;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -22,9 +20,7 @@ public class FmlLoadingPlugin implements IFMLLoadingPlugin {
     @Override
     public String[] getASMTransformerClass() {
         return new String[] {
-                InventoryPlayer.class.getName(),
-                InvTweaksConst.class.getName(),
-                InvTweaks.class.getName()
+                Transformer.class.getName()
         };
     }
 
