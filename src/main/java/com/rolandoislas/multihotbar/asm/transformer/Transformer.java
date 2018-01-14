@@ -8,13 +8,42 @@ import org.objectweb.asm.ClassWriter;
 import org.objectweb.asm.Opcodes;
 import org.objectweb.asm.tree.*;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
 import java.util.ListIterator;
 
 import static org.apache.logging.log4j.core.impl.ThrowableFormatOptions.CLASS_NAME;
 
 public class Transformer implements IClassTransformer {
-    private static final int HOTBAR_SIZE = 36;
+    private static final int HOTBAR_SIZE;
     private static final int VANILLA_HOTBAR_SIZE = 9;
+    private static final String HOTBAR_SIZE_FILE_LOCATION = "./config/multihotbar_size.txt";
+
+    static {
+        HOTBAR_SIZE = getHotbarSizeFromConfig();
+    }
+
+    /**
+     * Read a config file for hotbar size
+     * @return hotbar size from config
+     */
+    private static int getHotbarSizeFromConfig() {
+        try {
+            FileInputStream fileInputStream = new FileInputStream(HOTBAR_SIZE_FILE_LOCATION);
+            byte[] data = new byte[1];
+            fileInputStream.read(data);
+            String size = new String(data);
+            int sizeInt = Integer.parseInt(size);
+            if (sizeInt < 1 || sizeInt > 4)
+                return 36;
+            return sizeInt * VANILLA_HOTBAR_SIZE;
+        }
+        catch (IOException | NumberFormatException e) {
+            e.printStackTrace();
+            return 36;
+        }
+    }
 
     @Override
     public byte[] transform(String name, String transformedName, byte[] basicClass) {
