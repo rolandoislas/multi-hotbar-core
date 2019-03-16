@@ -73,8 +73,6 @@ public class Transformer implements IClassTransformer {
         if (doesAnyStringEqual(className, name, transformedName)) {
             ClassNode classNode = byteArrayToClassNode(basicClass);
             try {
-                transformFieldToExtendedHotbar("HOTBAR_SIZE", "I",
-                        "", "", classNode);
                 transformFieldToExtendedHotbar("INVENTORY_HOTBAR_SIZE", "I",
                         "", "", classNode);
             }
