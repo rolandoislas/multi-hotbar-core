@@ -15,6 +15,8 @@ apply plugin: "com.matthewprenger.cursegradle"
 
 ext.build = System.getenv("TRAVIS_BUILD_NUMBER")
 ext.tag = System.getenv("TRAVIS_TAG")
+ext.signKeyPass = System.getenv("SIGN_KEY_PASS")
+ext.signKeyStorePass = System.getenv("SIGN_KEY_STORE_PASS")
 version = "1.7.10-1.0"
 version =  version + "-build-T" + ext.build
 group= "com.rolandoislas.multihotbar" // http://maven.apache.org/guides/mini/guide-naming-conventions.html
@@ -28,8 +30,9 @@ minecraft {
 
 task signJar(dependsOn: "jar") {
     onlyIf {
-        System.getenv("SIGN_KEY_PASS")
-        System.getenv("SIGN_KEY_STORE_PASS")
+        project.ext.signKeyPass
+        project.ext.signKeyStorePass
+        project.ext.tag
     }
     doLast {
         ant.signjar(
@@ -38,8 +41,8 @@ task signJar(dependsOn: "jar") {
                 alias: "multihotbarcore",
                 storetype: "jks",
                 keystore: ".travis/multihotbar.jks",
-                storepass: System.getenv("SIGN_KEY_STORE_PASS"),
-                keypass: System.getenv("SIGN_KEY_PASS"),
+                storepass: project.ext.signKeyPass,
+                keypass: project.ext.signKeyStorePass,
                 verbose: true,
                 preservelastmodified: true
         )
