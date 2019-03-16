@@ -41,8 +41,8 @@ task signJar(dependsOn: "jar") {
                 alias: "multihotbarcore",
                 storetype: "jks",
                 keystore: ".travis/multihotbar.jks",
-                storepass: project.ext.signKeyPass,
-                keypass: project.ext.signKeyStorePass,
+                storepass: project.ext.signKeyStorePass,
+                keypass: project.ext.signKeyPass,
                 verbose: true,
                 preservelastmodified: true
         )
